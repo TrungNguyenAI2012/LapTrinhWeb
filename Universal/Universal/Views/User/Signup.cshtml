@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "User - Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2">Tài khoản mới / Đăng ký</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <li class="breadcrumb-item active">Tài khoản mới / Đăng ký</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <h2 class="text-uppercase">Tài khoản mới</h2>
+                <p class="lead">Chưa đăng ký thành viên?</p>
+                <p>Với việc đăng ký với chúng tôi, giảm giá tuyệt vời và nhiều hơn thế nữa sẽ mở ra cho bạn! Toàn bộ quá trình sẽ không mất quá một phút!</p>
+                <hr>
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <label for="TenDN">Tên đăng nhập</label><br />
+                        @Html.TextBox("TenDN", null, new { @class = "form-control"})
+                        @ViewData["Loi1"]
+                    </div>
+                    <div class="form-group">
+                        <label for="MatKhau">Mật khẩu</label>
+                        @Html.Password("MatKhau", null, new { @class = "form-control" })
+                        @ViewData["Loi2"]
+                    </div>
+                    <div class="form-group">
+                        <label for="HoKH">Họ</label>
+                        @Html.TextBox("HoKH", null, new { @class = "form-control" })
+                        @ViewData["Loi3"]
+                    </div>
+                    <div class="form-group">
+                        <label for="TenKH">Tên</label>
+                        @Html.TextBox("TenKH", null, new { @class = "form-control" })
+                        @ViewData["Loi4"]
+                    </div>
+                    <div class="form-group">
+                        <label for="birthday">Ngày sinh</label>
+                        <input id="birthday" name="birthday" type="date" class="form-control">
+                        @ViewData["Loi5"]
+                    </div>
+                    <div class="form-group">
+                        <label for="sex" style="margin-top: 11px">Giới tính</label>
+                        <input type="radio" id="male" name="gender" value="male" style="margin-left: 50px" checked>
+                        <label for="male">Nam</label>
+                        <input type="radio" id="female" name="gender" value="female" style="margin-left: 50px">
+                        <label for="female">Nữ</label><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="SoDT">Số điện thoại</label>
+                        @Html.TextBox("SoDT", null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        @Html.TextBox("Email", null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="DiaChi">Địa chỉ</label>
+                        @Html.TextBox("DiaChi", null, new { @class = "form-control" })
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-template-outlined"><i class="fa fa-user-md"></i> Đăng ký</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

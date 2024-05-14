@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Universal.Models.The>
+
+@foreach (var i in Model)
+{
+    <li class="list-inline-item"><a href="@Url.Action("Index", "Product")" style="color: #4fbfa8"><i class="fa fa-tags"></i> @i.TenThe (@i.TenThe.Count())</a></li>
+}

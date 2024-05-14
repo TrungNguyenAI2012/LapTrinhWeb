@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Universal.Models.TheLoai>
+
+@foreach (var i in Model)
+{
+    <li class="nav-item"><a href="@Url.Action("Index", "Product", new { id = i.MaLoai })" class="nav-link"> @i.TenLoai |@i.TenLoai.Count()</a></li>
+}

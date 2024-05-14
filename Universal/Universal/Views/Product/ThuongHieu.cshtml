@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Universal.Models.ThuongHieu>
+
+@foreach (var i in Model)
+{
+    <li class="nav-item"><a href="@Url.Action("Index", "Product", new { id = i.MaTH })" class="nav-link"> @i.TenTH |@i.TenTH.Count()</a></li>
+}

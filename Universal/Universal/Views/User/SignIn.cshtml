@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "User - SignIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2">Tài khoản mới / Đăng ký</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <li class="breadcrumb-item active">Tài khoản mới / Đăng ký</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <h2 class="text-uppercase">Đăng nhập</h2>
+                <p class="lead">Đã là thành viên?</p>
+                <p>Với việc đăng nhập với chúng tôi, giảm giá tuyệt vời và nhiều hơn thế nữa sẽ mở ra cho bạn! Sử dụng các tính năng lưu trữ, xem lịch sử, trạng trái đơn hàng,...</p>
+                <p class="text-muted">Nếu bạn có bất cứ câu hỏi nào, hãy @Html.ActionLink("liên hệ với chúng tôi", "Contact", "Home"), dịch vụ chăm sóc khách hàng luôn hoạt động 24/7.</p>
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group">
+                        @Html.TextBox("TenDN", null, new { @class = "form-control" })
+                        @ViewData["Loi1"]
+                    </div>
+                    <div class="form-group">
+                        @Html.Password("MatKhau", null, new { @class = "form-control" })
+                        @ViewData["Loi2"]
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-template-outlined"><i class="fa fa-user-md"></i> Đăng nhập</button><br /><br />
+                    </div>
+                }
+                <p class="text-center text-muted">Chưa có tài khoản?</p>
+                <p class="text-center text-muted"><a href="@Url.Action("Signup", "User")"><strong>Đăng ký ngay</strong></a>! Chỉ tốn vài phút và bạn sẽ nhận được nhiều ưu đãi hấp dẫn!</p>
+            </div>
+        </div>
+    </div>
+</div>

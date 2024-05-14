@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Blog - Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs" class="border-top-0 border-bottom-0">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2">Nội dung bài viết</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Bài viết", "Index", "Blog")</li>
+                    <li class="breadcrumb-item active">Nội dung bài viết</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="row bar">
+            <!-- LEFT COLUMN _________________________________________________________-->
+            <div id="blog-post" class="col-md-9">
+                <h3>@Model.TenBV </h3>
+                <p class="text-muted text-uppercase mb-small text-right text-sm">Bởi <a href="@Url.Action("Index", "Blog")">@Model.TaiKhoan</a> |  <i class="fa fa-calendar-o"></i>@Model.NgayDang</p>
+                <h6>@Model.TomTat</h6>
+                <img src="@Model.DDHinh" />
+                <p>@Model.NoiDung</p>
+                <div id="comments">
+                    <h4 class="text-uppercase">2 nhận xét</h4>
+                    @Html.Action("NhanXet", "Blog", new { id = Model.MaBV})
+                </div>
+                <div id="comment-form">
+                    <h4 class="text-uppercase">Để lại bình luận</h4>
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="name">Tên <span class="required text-primary">*</span></label>
+                                    <input id="name" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email">Email <span class="required text-primary">*</span></label>
+                                    <input id="email" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="comment">Nhận xét <span class="required text-primary">*</span></label>
+                                    <textarea id="comment" rows="4" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 text-right">
+                                <button class="btn btn-template-outlined"><i class="fa fa-comment-o"></i> Đăng bình luận</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default sidebar-menu">
+                    <div class="panel-heading">
+                        <h3 class="h4 panel-title">Thể loại</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-pills flex-column text-sm">
+                            @Html.Action("ChuDe", "Blog")
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel sidebar-menu">
+                    <div class="panel-heading">
+                        <h3 class="h4 panel-title">Thẻ</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="tag-cloud list-inline">
+                            @Html.Action("The", "Blog")
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

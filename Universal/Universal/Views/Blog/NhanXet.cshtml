@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Universal.Models.NhanXet>
+
+@foreach (var i in Model)
+{
+    <div class="row comment">
+        <div class="col-sm-9 col-md-10">
+            <h5 class="text-uppercase">@i.TaiKhoan</h5>
+            <p class="posted"><i class="fa fa-clock-o"></i> @i.NgayDang</p>
+            <p>@i.NoiDung</p>
+            <p class="reply"><a href="#"><i class="fa fa-reply"></i> Trả lời</a></p>
+        </div>
+    </div>
+}

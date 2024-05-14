@@ -1,0 +1,109 @@
+﻿@using Universal.Models;
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "Order - Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2">Giỏ hàng</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <li class="breadcrumb-item active">Giỏ hàng</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="row bar">
+            <div class="col-lg-12">
+                <p class="text-muted lead">Bạn đang có @ViewBag.TongSoLuong sản phẩm trong giỏ hàng</p>
+            </div>
+            <div id="basket" class="col-lg-9">
+                <div class="box mt-0 pb-0 no-horizontal-padding">
+                    <form method="get" action="@Url.Action("Step1", "Order")">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
+                                        <th>Khuyến mãi</th>
+                                        <th colspan="2">Tổng cộng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var i in Model)
+                                    {
+                                    <tr>
+                                        <td><a href="@Url.Action("Detail", "Product", new { id = i.sMaSP })"><img src="@i.sHinhSP" alt="@i.sTenSP" class="img-fluid"></a></td>
+                                        <td><a href="@Url.Action("Detail", "Product", new { id = i.sMaSP })">@i.sTenSP</a></td>
+                                        <td>
+                                            <input type="number" value="@i.iSoLg" class="form-control">
+                                        </td>
+                                        <td>@String.Format("{0:0,0}", @i.dGiaSP)VNĐ</td>
+                                        <td>@String.Format("{0:0,0}", @i.dKhuyenMai)VNĐ</td>
+                                        <td>@String.Format("{0:0,0}", @i.dTongTien)VNĐ</td>
+                                        <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                    </tr>
+                                    }
+                                    </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="5">Tổng cộng</th>
+                                        <th colspan="2">@String.Format("{0:0,0}", @ViewBag.TongTien) VNĐ</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="box-footer d-flex justify-content-between align-items-center">
+                            <div class="left-col"><a href="@Url.Action("Index", "Product")" class="btn btn-secondary mt-0"><i class="fa fa-chevron-left"></i> Tiếp tục mua sắm</a></div>
+                            <div class="right-col">
+                                <button class="btn btn-secondary"><i class="fa fa-refresh"></i> Cập nhập giỏ hàng</button>
+                                <button type="submit" class="btn btn-template-main">Thanh toán<i class="fa fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div id="order-summary" class="box mt-0 mb-4 p-0">
+                    <div class="box-header mt-0">
+                        <h3>Hóa đơn</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Tổng hóa đơn</td>
+                                    <th>@String.Format("{0:0,0}", @ViewBag.TongTien) VNĐ</th>
+                                </tr>
+                                <tr>
+                                    <td>Phí vân chuyển</td>
+                                    <th>10.000 VNĐ</th>
+                                </tr>
+                                <tr>
+                                    <td>Thuế</td>
+                                    <th>0 VNĐ</th>
+                                </tr>
+                                <tr class="total">
+                                    <td>Tổng cộng</td>
+                                    <th>@String.Format("{0:0,0}", @ViewBag.TongTien + 10000) VNĐ </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

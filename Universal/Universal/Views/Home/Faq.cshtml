@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Home - Faq";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2">Các câu hỏi thường gặp</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <li class="breadcrumb-item active">Các câu hỏi thường gặp</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="row bar">
+            <div class="col-md-12">
+                <section>
+                    <p class="lead">Nếu bạn có thắc mắc về chúng tôi thì có thể xem qua các câu hỏi thường gặp dưới đây</p>
+                    <div id="accordion" role="tablist">
+                        <div class="card card-primary">
+                            <div id="headingOne" role="tab" class="card-header">
+                                <h5 class="mb-0 mt-0"><a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">1. Tại Sao Tài Khoản Của Tôi Bị Khóa / Bị Giới Hạn?</a></h5>
+                            </div>
+                            <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" class="collapse show">
+                                <div class="card-body">
+                                    <p>Để đảm bảo tính bảo mật và an toàn cho Người dùng, Universal sẽ khóa / giới hạn tài khoản của bạn trong một số trường hợp:</p>
+                                    <ul>
+                                        <li>Vi phạm Điều khoản Dịch vụ của Universal.</li>
+                                        <li>Tạo đơn hàng ảo, đánh giá ảo.</li>
+                                        <li>Lạm dụng mã giảm giá, các chương trình trợ giá hoặc khuyến mãi tại Universal.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-primary">
+                            <div id="headingTwo" role="tab" class="card-header">
+                                <h5 class="mb-0 mt-0"><a data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">2. Cách Đăng Nhập Tài Khoản Universal Khi Quên / Mất Mật Khẩu</a></h5>
+                            </div>
+                            <div id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" class="collapse">
+                                <div class="card-body">Truy cập vào @Html.ActionLink("đây", "Account", "User") để lấy lại mật khẩu</div>
+                            </div>
+                        </div>
+                        <div class="card card-primary">
+                            <div id="headingThree" role="tab" class="card-header">
+                                <h5 class="mb-0 mt-0"><a data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed"> 3. Sao Shipper Chưa Giao Hàng / Khi Nào Giao Hàng Cho Tôi / Tôi Muốn Hối Giao Hàng?</a></h5>
+                            </div>
+                            <div id="collapseThree" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion" class="collapse">
+                                <div class="card-body">Nếu Shipper chưa giao hàng  / lấy hàng / hoàn trả đơn hàng theo đúng thời gian dự kiến, hãy liên hệ trực tiếp đơn vị vận chuyển theo thông tin <a href="tel:18006328">1800 6328</a> hoặc <a href="mailto:cskh@ghn.vn">cskh@ghn.vn</a></div>
+                            </div>
+                        </div>
+                        <div class="card card-primary">
+                            <div id="headingFour" role="tab" class="card-header">
+                                <h5 class="mb-0 mt-0"><a data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFive" class="collapsed">4. Tôi Muốn Kiểm Tra Đơn Hàng Giao Tới Đâu</a></h5>
+                            </div>
+                            <div id="collapseFour" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion" class="collapse">
+                                <div class="card-body">
+                                    <p>Nếu bạn chưa đăng nhập thì hãy đăng nhập sau đó xem tại @Html.ActionLink("đây", "Index", "User")</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-primary">
+                            <div id="headingFive" role="tab" class="card-header">
+                                <h5 class="mb-0 mt-0"><a data-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseThree" class="collapsed"> 5. Tôi Không Thể Đặt Hàng / Đăng Ký Tài Khoản / Đăng Nhập Do Số Tài Khoản Đã Tồn Tại</a></h5>
+                            </div>
+                            <div id="collapseFive" role="tabpanel" aria-labelledby="headingFive" data-parent="#accordion" class="collapse">
+                                <div class="card-body">
+                                    <p>Theo quy định của Universal, một tên tài khoản chỉ có thể tạo duy nhất một tài khoản Universal..</p>
+                                    <ul>
+                                        <li>Tài khoản cũ là của bạn:            Truy cập @Html.ActionLink("đây", "Account", "User") để lấy lại mật khẩu</li>
+                                        <li>Tài khoản cũ không phải của bạn:    Vui lòng dùng tên tài khoản khác để @Html.ActionLink("đăng ký", "Signup", "User")</li>
+                                        <li>Tài khoản cũ đã bị khóa:            Chúng tôi không giải quyết trường hợp tài khoản đã bị khóa! Vui lòng @Html.ActionLink("đăng ký", "Signup", "User") bằng tên tài khoản khác tại</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted">Nếu bạn vẫn chưa giải quyết được khúc mắc của mình, hãy @Html.ActionLink("Liên hệ với chúng tôi", "Contact", "Home"). Rất sẵn lòng khi được giúp các bạn!</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

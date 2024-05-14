@@ -1,0 +1,97 @@
+﻿@using Universal.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<BaiViet>
+
+@{
+    ViewBag.Title = "Blog - Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="heading-breadcrumbs" class="border-top-0 border-bottom-0">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+                <h1 class="h2">Bài viết</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+                    <li class="breadcrumb-item active">Bài viết</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="row bar">
+            <div id="blog-listing-medium" class="col-md-9">
+                @foreach (var i in Model)
+                {
+                    <section class="post">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="image"><a href="@Url.Action("Detail", "Blog", new { id = i.MaBV})"><img src="@i.DDHinh" alt="@i.TenBV" height="250" width="250"></a></div>
+                            </div>
+                            <div class="col-md-8">
+                                <h2 class="h3 mt-0"><a href="@Url.Action("Detail", "Blog", new { id = i.MaBV})">@i.TenBV</a></h2>
+                                <div class="d-flex flex-wrap justify-content-between text-xs">
+                                    <p class="author-category">Bởi <a href="@Url.Action("Index", "Blog", new { id = i.TaiKhoan})">@i.TaiKhoan</a> trong <a href="@Url.Action("Index", "Blog", new { id = i.MaLoai})">@i.MaLoai</a></p>
+                                    <p class="date-comments"><i class="fa fa-calendar-o"></i> @i.NgayDang <i class="fa fa-comment-o"></i> 2 nhận xét</p>
+                                </div>
+                                <p class="intro">@i.TomTat</p>
+                                <p class="read-more text-right"><a href="@Url.Action("Detail", "Blog", new { id = i.MaBV})" class="btn btn-template-outlined">Đọc tiếp</a></p>
+                            </div>
+                        </div>
+                    </section>
+                }
+                <div class="pages">
+                    <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                        <ul class="pagination">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default sidebar-menu">
+                    <div class="panel-heading">
+                        <h3 class="h4 panel-title">Thể loại</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-pills flex-column text-sm">
+                            @Html.Action("ChuDe", "Blog")
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel sidebar-menu">
+                    <div class="panel-heading">
+                        <h3 class="h4 panel-title">Thẻ</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="tag-cloud list-inline">
+                            @Html.Action("The", "Blog")
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .pages li {
+        padding: 0.5rem 0.75rem;
+        line-height: 1.25;
+        color: #4fbfa8;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+    }
+
+        .pages li.active {
+            color: #348e7b;
+            text-decoration: none;
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+            outline: 0;
+        }
+</style>

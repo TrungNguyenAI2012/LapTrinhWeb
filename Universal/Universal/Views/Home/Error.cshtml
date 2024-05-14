@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Home - Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+    <div class="container">
+        <div id="error-page" class="col-md-8 mx-auto text-center">
+            <div class="box">
+                <p class="text-center"><a href="@Url.Action("Index", "Home")"><img src="~/Asset/Image/logo.png" alt="Obaju template"></a></p>
+                <h3>Chúng tôi rất tiếc - trang này không khả dụng</h3>
+                <h4 class="text-muted">Lỗi 404 - không thể tìm thấy trang</h4>
+                <p class="buttons"><a href="@Url.Action("Index", "Home")" class="btn btn-template-outlined"><i class="fa fa-home"></i> Về trang chủ</a></p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Universal.Models.BaiViet>
+
+@foreach (var i in Model)
+{
+    <div class="col-lg-3">
+        <div class="home-blog-post">
+            <div class="image">
+                <img src=" @i.DDHinh" alt="" height="250" width="250" style="text-align: center; margin: 0 auto; display: block">
+                <div class="overlay d-flex align-items-center justify-content-center"><a href="@Url.Action("Detail", "Blog", new { id = i.MaBV})" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Đọc thêm</a></div>
+            </div>
+            <div class="text">
+                <h4><a href="@Url.Action("Detail", "Blog", new { id = i.MaBV})"> @i.TenBV</a></h4>
+                <p class="author-category">Đăng bỏi <a href="@Url.Action("Index", "Blog", new { id = i.TaiKhoan })"> @i.TaiKhoan</a> trong mục <a href="@Url.Action("Index", "Blog", new { id = i.MaLoai })"> @i.MaLoai</a></p>
+                <p class="intro"> @i.TomTat</p><a href="@Url.Action("Detail", "Blog", new { id = i.MaBV})" class="btn btn-template-outlined">Đọc tiếp</a>
+            </div>
+        </div>
+    </div>
+}
+
+
